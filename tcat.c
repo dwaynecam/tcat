@@ -78,7 +78,7 @@ int main(int argc, char** argv) {
     format = format_env;
   }
 
-  time_format time_format = gmtime_r;
+  time_format time_format = localtime_r;
 
   for (int i = 1; i < argc; i++) {
     if (match(argv[i], "-v", "--version")) {
@@ -91,8 +91,8 @@ int main(int argc, char** argv) {
       return EXIT_SUCCESS;
     }
 
-    if (match(argv[i], "-l", "--local")) {
-      time_format = localtime_r;
+    if (match(argv[i], "-gm", "--gmtime")) {      
+	  time_format = gmtime_r;
       continue;
     }
 
